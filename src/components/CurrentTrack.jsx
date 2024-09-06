@@ -51,7 +51,7 @@ export default function CurrentTrack() {
           }
       </Container>
   )
-}
+};
 
 const Container = styled.div`
     .track{

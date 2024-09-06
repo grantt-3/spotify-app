@@ -46,6 +46,11 @@ export default function Body({ headerBackground }) {
     const seconds = ((ms % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds
     };
+
+    const playTrack = async (id, name, artists, image, context_uri, track_number) => {
+        
+    }
+
     return (
         <Container headerBackground={headerBackground}>
             {selectedPlaylist && (
@@ -98,7 +103,20 @@ export default function Body({ headerBackground }) {
                                     index
                                 ) => {
                                     return (
-                                        <div className="row" key={id}>
+                                        <div
+                                            className="row"
+                                            key={id}
+                                            onClick={() =>
+                                                playTrack(
+                                                    id,
+                                                    name,
+                                                    artists,
+                                                    image,
+                                                    context_uri,
+                                                    track_number
+                                                )
+                                            }
+                                        >
                                             <div className="col">
                                                 <span>{index + 1}</span>
                                             </div>
@@ -120,7 +138,11 @@ export default function Body({ headerBackground }) {
                                                 <span>{album}</span>
                                             </div>
                                             <div className="col">
-                                                <span>{msToMinutesAndSeconds(duration)}</span>
+                                                <span>
+                                                    {msToMinutesAndSeconds(
+                                                        duration
+                                                    )}
+                                                </span>
                                             </div>
                                         </div>
                                     );
